@@ -4,6 +4,7 @@
 
 -   [Beschreibung](#beschreibung)
 -   [Header Datein](#header-datein)
+-   [Build](#build)
 
 ## Beschreibung
 
@@ -23,7 +24,7 @@ Bis jetzt beherrscht er die Grundrechenarten addieren(+), subtrahieren(-), multi
 1. Clone das Repository
 2. Öffne die Konsole im Ordner calculator
 3. Führe den Befehl aus:
-    ``` bash
-    gcc main.c -o main && main
+    ```bash
+    gcc main.c -o calculator && calculator
     ```
 4. Fertig
