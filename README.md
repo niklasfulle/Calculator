@@ -20,9 +20,10 @@ Bis jetzt beherrscht er die Grundrechenarten addieren(+), subtrahieren(-), multi
 
 ## Build
 
-1. Öffne die Konsole im Ordner calculator
-2. Führe den Befehl aus:
+1. Clone das Repository
+2. Öffne die Konsole im Ordner calculator
+3. Führe den Befehl aus:
     ``` bash
     gcc main.c -o main && main
     ```
-3. Fertig
+4. Fertig
