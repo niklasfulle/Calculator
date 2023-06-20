@@ -21,3 +21,18 @@ double multiply(double a, double b){
 double divide(double a, double b){
     return a / b;
 }
+
+double calculateOneSymbol(double a, double b, char symbol){
+    switch (symbol){
+        case '+':
+            return add(a, b);
+        case '-':
+            return subtract(a, b);
+        case '*':
+            return multiply(a, b);
+        case '/':
+            return divide(a, b);
+        default:
+            return 0;
+    }
+}
