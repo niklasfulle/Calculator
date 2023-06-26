@@ -4,7 +4,8 @@
 void printInfo(){
     printf("Calculator v1.0\n");
     printf("Functions like add(+), subtract(-), multiply(x), divide(/)\n");
-    printf("Simply like '10+10+10'\n");
+    printf("Simply like '10+10+10+10'\n");
+    printf("Max Four Numbers\n");
     printf("Type 'exit' to exit\n");
 }
 

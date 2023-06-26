@@ -113,12 +113,94 @@ void splitInput(char * input){
 }
 
 double calculate(void){
+    int symbolCountMulDiv, symbolCountAddSub = 0;
+    for (size_t i = 0; i < symbolCount; i++){
+        if(symbols[i].data == '*' || symbols[i].data == '/'){
+            symbolCountMulDiv++;
+        }else if (symbols[i].data == '+' || symbols[i].data == '-'){
+            symbolCountAddSub++;
+        }
+    }
 
     if(symbolCount == 1){
         numbers[0].data = calculateOneSymbol(numbers[0].data, numbers[1].data, symbols[0].data);
         numbers[1].used = 1;
         symbols[0].used = 1;
+        numbers[0].used = 1;
+    }else if (symbolCount > 1){
+        if(symbolCountMulDiv > 0 && symbolCountAddSub == 0){
+            int i = 0;
+            while (i < symbolCount){
+                if(numbers[i+1].used != 1 && symbols[i].used != 1){
+                    if (symbols[i].data == '*' || symbols[i].data == '/'){
+                        numbers[0].data = calculateOneSymbol(numbers[0].data, numbers[i+1].data, symbols[i].data);
+                        numbers[i+1].used = 1;
+                        symbols[i].used = 1;
+                    }
+                }
+                i++;
+            }
+            numbers[0].used = 1;
+        }
+        else if (symbolCountMulDiv > 0 && symbolCountAddSub > 0){
+            /*int i = 0;
+            while (i < symbolCount){
+                if(symbols[i].used != 1){
+                    if (symbols[i].data == '*' || symbols[i].data == '/'){
+                        /*numbers[i].data = calculateOneSymbol(numbers[i].data, numbers[i+1].data, symbols[i].data);
+                        numbers[i+1].used = 1;
+                        symbols[i].used = 1;
+                        printf("i: %d\n", i);
+                        symbols[i].used = 1;
+                    }
+                }
+                i++;
+            }*/
+            /*int i = 0;
+            while (i < symbolCount){
+                if(numbers[i].used != 1 && numbers[i+1].used != 1 && symbols[i].used != 1){
+                    if (symbols[i].data == '*' || symbols[i].data == '/'){
+                        numbers[i].data = calculateOneSymbol(numbers[i].data, numbers[i+1].data, symbols[i].data);
+                        numbers[i+1].used = 1;
+                        symbols[i].used = 1;
+                    }
+                }
+                i++;
+            }
+            int j = 0;
+            while (j < symbolCount){
+                if(numbers[j].used != 1 && numbers[j+2].used != 1 && symbols[j].used != 1 || symbols[j+1].used != 1){
+                    if (symbols[j].data == '*' || symbols[j].data == '/'){
+                        numbers[j].data = calculateOneSymbol(numbers[j].data, numbers[j+2].data, symbols[j+1].data);
+                        numbers[j+2].used = 1;
+                        symbols[j].used = 1;
+                        printf("%c\n", symbols[j].data);
+                    }
+                }
+                j++;
+            }*/
+        }else {
+            int i = 0;
+            while (i < symbolCount){
+                if (symbols[i].data == '+' || symbols[i].data == '-'){
+                    numbers[0].data = calculateOneSymbol(numbers[0].data, numbers[i+1].data, symbols[i].data);
+                    numbers[i+1].used = 1;
+                    symbols[i].used = 1;
+                }
+                i++;
+            }
+            numbers[0].used = 1;
+        }
     }
+
+    /*for (size_t i = 0; i < symbolCount; i++)
+    {   
+        printf("Numbers: %f\n", numbers[i].data);
+        printf("Used: %d\n", numbers[i].used);
+        printf("Symbols: %c\n", symbols[i].data);
+        printf("Used: %d\n", symbols[i].used);
+    }*/
+    
     
     return numbers[0].data;
 }
@@ -133,6 +215,7 @@ int main(int argc, char** argv){
     validateInput(input);
     splitInput(input);
     printf("Your input: %s\n", input);
+    //calculate();
     printf("Result: %f\n", calculate());
     return 0;
 }
