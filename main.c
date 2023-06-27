@@ -63,7 +63,7 @@ void splitInput(char * input){
     // reserviert den Speicher für die Anzahl der Symbole
     symbols = malloc(symbolCount * sizeof(Symbol));
     if (symbols == NULL){   
-        printf("Error: malloc failed\n");
+        printf("\033[0;31mError: malloc failed\033[0m\n");
         exit(1);
     }
     
@@ -71,7 +71,7 @@ void splitInput(char * input){
     int numberCount = symbolCount+1;
     numbers = malloc(numberCount * sizeof(Number));
     if (numbers == NULL){   
-        printf("Error: malloc failed\n");
+        printf("\033[0;31mError: malloc failed\033[0m\n");
         exit(1);
     }
     

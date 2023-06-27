@@ -32,18 +32,18 @@ void validateInput(char *input){
     for (int i = 0; input[i] != '\0'; i++){
         //check for only valid symbols
         if(input[i] != '+' && input[i] != '-' && input[i] != '*' && input[i] != '/' && input[i] != '.' && (input[i] < '0' || input[i] > '9')){
-            printf("Error: invalid symbol found\n");
+            printf("\033[0;31mError: invalid symbol found\033[0m\n");
             exit(1);
         }
         if(input[i] == '.'){
             if((input[i-1] < '0' || input[i-1] > '9') || (input[i+1] < '0' || input[i+1] > '9')){
-                printf("Error: invalid symbol found\n");
+                printf("\033[0;31mError: invalid symbol found\033[0m\n");
             exit(1);
             }
         }
         //check for only one symbol in a row
         if(checkSymbol(input[i]) == 1 && checkSymbol(input[i+1]) == 1){
-            printf("Error: two symbols in a row\n");
+            printf("\033[0;31mError: two symbols in a row\033[0m\n");
             exit(1);
         }
         if(checkSymbol(input[i]) == 1){
@@ -51,16 +51,16 @@ void validateInput(char *input){
         }
     }
     if(symbolCount == 0){
-        printf("Error: no symbol found\n");
+        printf("\033[0;31mError: no symbol found\033[0m\n");
         exit(1);
     }
     if(symbolCount > 0){
         if(input[0] == '+' || input[0] == '-' || input[0] == '*' || input[0] == '/'){
-            printf("Error: first symbol is not a number\n");
+            printf("\033[0;31mError: first symbol is not a number\033[0m\n");
             exit(1);
         }
         if(input[stringLenght-1] == '+' || input[stringLenght-1] == '-' || input[stringLenght-1] == '*' || input[stringLenght-1] == '/'){
-            printf("Error: last symbol is not a number\n");
+            printf("\033[0;31mError: last symbol is not a number\033[0m\n");
             exit(1);
         }
     }
